@@ -1,0 +1,17 @@
+{
+  "name": "node-ejs",
+  "version": "1.0.0",
+  "description": "Working With EJS Template",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "author": "Subhadip Maity",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
