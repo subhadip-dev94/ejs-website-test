@@ -521,107 +521,43 @@
 
                             <h5 class="mt-5 mb-3">Recent news</h5>
 
+                            <% news.map(item => { %>
                             <div class="news-block news-block-two-col d-flex mt-4">
                                 <div class="news-block-two-col-image-wrap">
-                                    <a href="javascript:void(0);">
-                                        <img src="/images/news/africa-humanitarian-aid-doctor.jpg" class="news-image img-fluid" alt="">
-                                    </a>
+                                <a href="<%= item.url %>">
+                                    <img src="<%= item.image %>" class="news-image img-fluid" alt="<%= item.title %>">
+                                </a>
                                 </div>
 
                                 <div class="news-block-two-col-info">
-                                    <div class="news-block-title mb-2">
-                                        <h6><a href="javascript:void(0);" class="news-block-title-link">Food donation area</a></h6>
-                                    </div>
-
-                                    <div class="news-block-date">
-                                        <p>
-                                            <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 16, 2036
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="news-block news-block-two-col d-flex mt-4">
-                                <div class="news-block-two-col-image-wrap">
-                                    <a href="javascript:void(0);">
-                                        <img src="/images/news/close-up-happy-people-working-together.jpg" class="news-image img-fluid" alt="">
-                                    </a>
+                                <div class="news-block-title mb-2">
+                                    <h6><a href="<%= item.url %>" class="news-block-title-link"><%= item.title %></a></h6>
                                 </div>
 
-                                <div class="news-block-two-col-info">
-                                    <div class="news-block-title mb-2">
-                                        <h6><a href="javascript:void(0);" class="news-block-title-link">Volunteering Clean</a></h6>
-                                    </div>
-
-                                    <div class="news-block-date">
-                                        <p>
-                                            <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 24, 2036
-                                        </p>
-                                    </div>
+                                <div class="news-block-date">
+                                    <p><i class="bi-calendar4 custom-icon me-1"></i> <%= item.date %></p>
+                                </div>
                                 </div>
                             </div>
+                            <% }) %>
 
-                            <div class="category-block d-flex flex-column">
-                                <h5 class="mb-3">Categories</h5>
+                            <div class="category-block d-flex flex-column mt-5">
+                            <h5 class="mb-3">Categories</h5>
 
+                            <% categories.map(cat => { %>
                                 <a href="#" class="category-block-link">
-                                    Drinking water
-                                    <span class="badge">20</span>
+                                <%= cat.name %>
+                                <span class="badge"><%= cat.count %></span>
                                 </a>
-
-                                <a href="#" class="category-block-link">
-                                    Food Donation
-                                    <span class="badge">30</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Children Education
-                                    <span class="badge">10</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Poverty Development
-                                    <span class="badge">15</span>
-                                </a>
-
-                                <a href="#" class="category-block-link">
-                                    Clothing Donation
-                                    <span class="badge">20</span>
-                                </a>
+                            <% }) %>
                             </div>
 
-                            <div class="tags-block">
-                                <h5 class="mb-3">Tags</h5>
+                            <div class="tags-block mt-5">
+                            <h5 class="mb-3">Tags</h5>
 
-                                <a href="#" class="tags-block-link">
-                                    Donation
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Clothing
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Food
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Children
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Education
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Poverty
-                                </a>
-
-                                <a href="#" class="tags-block-link">
-                                    Clean Water
-                                </a>
+                            <% tags.map(tag => { %>
+                                <a href="javascript:void(0)" class="tags-block-link"><%= tag %></a>
+                            <% }) %>
                             </div>
 
                             <form class="custom-form subscribe-form" action="#" method="get" role="form">
@@ -647,60 +583,27 @@
                         <div class="col-lg-8 col-12 mx-auto">
                             <h2 class="mb-lg-3">Happy Customers</h2>
                             
-                                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
-
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                           <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Maria</span>, Boss</small>
-                                           </div>
-                                        </div>
-
-                                        <div class="carousel-item">
+                            <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <% testimonials.map((testimonial, i) => { %>
+                                        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
                                             <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Thomas</span>, Partner</small>
+                                                <h4 class="carousel-title"><%= testimonial.text %></h4>
+                                                <small class="carousel-name">
+                                                    <span class="carousel-name-title"><%= testimonial.name %></span>, <%= testimonial.role %>
+                                                </small>
                                             </div>
                                         </div>
+                                    <% }) %>                               
 
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito charity theme</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Jane</span>, Advisor</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="carousel-item">
-                                            <div class="carousel-caption">
-                                                <h4 class="carousel-title">Sed leo nisl, posuere at molestie ac, suscipit auctor mauris quis metus tempor orci</h4>
-
-                                                <small class="carousel-name"><span class="carousel-name-title">Bob</span>, Entreprenuer</small>
-                                           </div>
-                                        </div>
-
-                                          <ol class="carousel-indicators">
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                                    <img src="/images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                                    <img src="/images/avatar/portrait-young-redhead-bearded-male.jpg" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                                    <img src="/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-
-                                               <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                                    <img src="/images/avatar/studio-portrait-emotional-happy-funny.jpg" class="img-fluid rounded-circle avatar-image" alt="avatar">
-                                               </li>
-                                          </ol>
-
-                                 </div>
+                                    <ol class="carousel-indicators">
+                                        <% testimonials.map((testimonial, i) => { %>
+                                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="<%= i %>" class="<%= i === 0 ? 'active' : '' %>">
+                                                <img src="<%= testimonial.image %>" class="img-fluid rounded-circle avatar-image" alt="avatar">
+                                            </li>
+                                        <% }) %>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
 
