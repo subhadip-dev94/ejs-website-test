@@ -1,0 +1,41 @@
+<%- include("./layouts/header") %>
+<div class="container">
+  <h1>Upload Your CSV</h1>
+  <p>Please select a CSV file to upload. The file should contain user data in the correct format.</p>
+  <p>Ensure the CSV file is formatted correctly with headers for Name, email, phoneNumber, age, gender & address</p>
+  <p>Maximum file size allowed is 5MB.</p>
+  <p>Supported file types: CSV</p>
+  <p>Note: The file will be processed and the data will be stored in the database.</p>
+  <p>After uploading, you can view the uploaded data in the <a href="/list">Uploaded Users Data</a> section.</p>
+  <p>Click the button below to select and upload your CSV file.</p>
+  <br><br>
+  <div class="alert alert-info">
+    <strong>Note:</strong> Ensure your CSV file is formatted correctly with headers for Name, email, phoneNumber, age, gender & address 
+    <br>
+    <strong>Maximum file size allowed is 5MB.</strong>
+    <br>
+    <strong>Supported file types: CSV</strong>
+    <br>
+    <strong>After uploading, you can view the uploaded data in the <a href="/list">Uploaded Users Data</a> section.</strong>
+  </div>
+
+
+  <form action="/upload-csv" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="csvFile">CSV File:</label>
+      <input type="file" class="form-control" name="csvfile" accept=".csv" required>
+    </div>
+    <input type="submit" class="btn btn-primary">
+  </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%- include("./layouts/footer") %>
